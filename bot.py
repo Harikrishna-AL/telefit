@@ -10,10 +10,12 @@ import re
 nut_end_point_url = 'https://trackapi.nutritionix.com/v2/natural/nutrients'
 exercise_end_point_url = 'https://trackapi.nutritionix.com/v2/natural/exercise'
 
-
-NUTRITIONIX_API_KEY = environ['NUTRITIONIX_API_KEY']
-NUTRITIONIX_APP_ID = environ['NUTRITIONIX_APP_ID']
-HTTP_API = environ['http_api']
+NUTRITIONIX_APP_ID = '49d0d5ca'
+NUTRITIONIX_API_KEY = 'd8304e81052593c664c2e42e6c0f1d01'
+HTTP_API = '5021775577:AAHYwGZ9JkJKH5IITDsQn7B-lmm8qNKpclg'
+#NUTRITIONIX_API_KEY = environ['NUTRITIONIX_API_KEY']
+#NUTRITIONIX_APP_ID = environ['NUTRITIONIX_APP_ID']
+#HTTP_API = environ['http_api']
 
 HEADERS = {'Content-Type': 'application/json',
            'x-app-id': NUTRITIONIX_APP_ID, 'x-app-key': NUTRITIONIX_API_KEY}
@@ -130,13 +132,19 @@ def getCaloriesBurn(message):
 def getCaloriesBurn(message):
     bot.reply_to(message, 'Generating report...')
     # TODO: 3.4 Send downlodable CSV file to telegram chat
-    #nutrition_csv.close()
-    #exercise_csv.close()
-
+    nutrition_csv.close()
+    exercise_csv.close()
     nutrition = open('nutrition.csv', 'rb')
-    bot.send_document(message.chat.id, nutrition, protect_content=True)
-    exercise = open('exercise.csv' , 'rb')
-    bot.send_document(message.chat.id, exercise, protect_content=True)
+    exercise = open('exercise.csv', 'rb')
+    if message.text[9:] == 'nutrition':
+        bot.send_document(message.chat.id, nutrition)
+    if message.text[9:] == 'exercise':
+        bot.send_document(message.chat.id, exercise)
+    if message.text[9:] == 'nutrition, exercise':
+        bot.send_document(message.chat.id, nutrition)
+        bot.send_document((message.chat.id, exercise))
+    else:
+        default(message)
 
 @bot.message_handler(func=lambda message: botRunning)
 def default(message):
