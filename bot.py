@@ -137,12 +137,12 @@ def getCaloriesBurn(message):
     nutrition = open('nutrition.csv', 'rb')
     exercise = open('exercise.csv', 'rb')
     if message.text[9:] == 'nutrition':
-        bot.send_document(message.chat.id, nutrition)
+        bot.send_document(message.chat.id, nutrition, protect_content=False)
     if message.text[9:] == 'exercise':
-        bot.send_document(message.chat.id, exercise)
+        bot.send_document(message.chat.id, exercise, protect_content=False)
     if message.text[9:] == 'nutrition, exercise':
-        bot.send_document(message.chat.id, nutrition)
-        bot.send_document((message.chat.id, exercise))
+        bot.send_document(message.chat.id, nutrition, protect_content=False)
+        bot.send_document(message.chat.id, exercise, protect_content=False)
     else:
         default(message)
 
