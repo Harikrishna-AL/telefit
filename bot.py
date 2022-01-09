@@ -10,12 +10,9 @@ import re
 nut_end_point_url = 'https://trackapi.nutritionix.com/v2/natural/nutrients'
 exercise_end_point_url = 'https://trackapi.nutritionix.com/v2/natural/exercise'
 
-NUTRITIONIX_APP_ID = '49d0d5ca'
-NUTRITIONIX_API_KEY = 'd8304e81052593c664c2e42e6c0f1d01'
-HTTP_API = '5021775577:AAHYwGZ9JkJKH5IITDsQn7B-lmm8qNKpclg'
-#NUTRITIONIX_API_KEY = environ['NUTRITIONIX_API_KEY']
-#NUTRITIONIX_APP_ID = environ['NUTRITIONIX_APP_ID']
-#HTTP_API = environ['http_api']
+NUTRITIONIX_API_KEY = environ['NUTRITIONIX_API_KEY']
+NUTRITIONIX_APP_ID = environ['NUTRITIONIX_APP_ID']
+HTTP_API = environ['http_api']
 
 HEADERS = {'Content-Type': 'application/json',
            'x-app-id': NUTRITIONIX_APP_ID, 'x-app-key': NUTRITIONIX_API_KEY}
