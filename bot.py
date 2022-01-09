@@ -1,7 +1,5 @@
 import os
 from os import environ
-from dotenv import load_dotenv
-load_dotenv()
 import telebot
 import requests
 import json
@@ -13,9 +11,9 @@ nut_end_point_url = 'https://trackapi.nutritionix.com/v2/natural/nutrients'
 exercise_end_point_url = 'https://trackapi.nutritionix.com/v2/natural/exercise'
 
 
-NUTRITIONIX_API_KEY = environ('NUTRITIONIX_API_KEY')
-NUTRITIONIX_APP_ID = environ('NUTRITIONIX_APP_ID')
-HTTP_API = environ('http_api')
+NUTRITIONIX_API_KEY = environ['NUTRITIONIX_API_KEY']
+NUTRITIONIX_APP_ID = environ['NUTRITIONIX_APP_ID']
+HTTP_API = environ['http_api']
 
 HEADERS = {'Content-Type': 'application/json',
            'x-app-id': NUTRITIONIX_APP_ID, 'x-app-key': NUTRITIONIX_API_KEY}
